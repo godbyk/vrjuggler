@@ -36,8 +36,9 @@ set(DIRECTX_ROOT_DIR
 	"Root directory to search for DirectX")
 
 if(MSVC)
+	set(ProgramFilesx86 "ProgramFiles(x86)")
 	file(TO_CMAKE_PATH "$ENV{ProgramFiles}" _PROG_FILES)
-	file(TO_CMAKE_PATH "$ENV{ProgramFiles(x86)}" _PROG_FILES_X86)
+	file(TO_CMAKE_PATH "$ENV{${ProgramFilesx86}}" _PROG_FILES_X86)
 	if(_PROG_FILES_X86)
 		set(_PROG_FILES "${_PROG_FILES_X86}")
 	endif()
