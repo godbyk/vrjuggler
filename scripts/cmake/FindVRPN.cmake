@@ -31,6 +31,7 @@ set(VRPN_ROOT_DIR
 	CACHE
 	PATH
 	"Root directory to search for VRPN")
+set(ProgramFilesx86 "ProgramFiles(x86)")
 
 if("${CMAKE_SIZEOF_VOID_P}" MATCHES "8")
 	set(_libsuffixes lib64 lib)
@@ -39,9 +40,9 @@ if("${CMAKE_SIZEOF_VOID_P}" MATCHES "8")
 	file(TO_CMAKE_PATH "$ENV{ProgramW6432}" _progfiles)
 else()
 	set(_libsuffixes lib)
-	if(NOT "$ENV{ProgramFiles(x86)}" STREQUAL "")
+	if(NOT "$ENV{${ProgramFilesx86}}" STREQUAL "")
 		# 32-bit dir: only set on win64
-		file(TO_CMAKE_PATH "$ENV{ProgramFiles(x86)}" _progfiles)
+		file(TO_CMAKE_PATH "$ENV{${ProgramFilesx86}}" _progfiles)
 	else()
 		# 32-bit dir on win32, useless to us on win64
 		file(TO_CMAKE_PATH "$ENV{ProgramFiles}" _progfiles)

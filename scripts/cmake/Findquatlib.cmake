@@ -39,10 +39,11 @@ else()
 		# 64-bit dir: only set on win64
 		file(TO_CMAKE_PATH "$ENV{ProgramW6432}" _progfiles)
 	else()
+	        set(ProgramFilesx86 "ProgramFiles(x86)")
 		set(_libsuffixes lib)
-		if(NOT "$ENV{ProgramFiles(x86)}" STREQUAL "")
+		if(NOT "$ENV{${ProgramFilesx86}}" STREQUAL "")
 			# 32-bit dir: only set on win64
-			file(TO_CMAKE_PATH "$ENV{ProgramFiles(x86)}" _progfiles)
+			file(TO_CMAKE_PATH "$ENV{${ProgramFilesx86}}" _progfiles)
 		else()
 			# 32-bit dir on win32, useless to us on win64
 			file(TO_CMAKE_PATH "$ENV{ProgramFiles}" _progfiles)
